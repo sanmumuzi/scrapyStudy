@@ -17,9 +17,11 @@ class Mycsdn(CrawlSpider):
     def parse_item(self, response):
         item = CsdnItem()
         blog_name1 = response.xpath('//div[@id="article_details"]/div/h1/span/a/text()').extract()
+        # 不能直接取第一个元素，很容易出现标题为空的情况
         blog_url1 = str(response.url)
+        temp = ''.join([n for n in blog_name1])
 
         item["blog_url1"] = blog_url1
-        item["blog_name1"] = [n for n in blog_name1]
-
+        item["blog_name1"] = temp.strip()
+        # 迭代每个列表中的元素，然后进行拼接，再除去空格
         yield item
