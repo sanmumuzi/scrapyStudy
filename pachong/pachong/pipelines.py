@@ -45,12 +45,12 @@ class BiliIndexPipeline(object):
     def __init__(self):
         client = MongoClient(host=host, port=port)
         db = client[dbname]
-        self.collenction = db[collection]
+        self.collection = db[collection]
 
     def process_item(self, item, spider):
         # for data in item:
         #     self.collenction.insert(dict(data))
-        self.collenction.insert(dict(item))
+        self.collection.insert(dict(item))
         return item
 
 
