@@ -57,7 +57,7 @@ class PachongSpiderMiddleware(object):
 
 
 import random
-from scrapy.contrib.downloadermiddleware.useragent import UserAgentMiddleware  #
+from scrapy.contrib.downloadermiddleware.useragent import UserAgentMiddleware
 
 class RotatueUserAgentMiddleware(UserAgentMiddleware):
 
