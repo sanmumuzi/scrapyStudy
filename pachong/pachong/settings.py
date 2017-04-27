@@ -28,7 +28,7 @@ ROBOTSTXT_OBEY = True
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 1                     # -----------------------------------------------------------------不敢作死
+DOWNLOAD_DELAY = 1.5                     # -----------------------------------------------------------------不敢作死
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
@@ -71,11 +71,17 @@ DOWNLOADER_MIDDLEWARES = {
 ITEM_PIPELINES = {
    # 'pachong.pipelines.StocksSpiderPipeline': 300,       # 打开管道
    #  'pachong.pipelines.BiliIndexPipeline' : 300,
+    'pachong.pipelines.CsdnTitlePipline' : 300,
 }
 MONGODB_HOST = "127.0.0.1"
 MONGODB_PORT = 27017
 MONGODB_DBNAME = "BiliAnime"
 MONGODB_COLLECTION = "introduction"
+
+MONGODB_HOST_CSDN = "127.0.0.1"
+MONGODB_PORT_CSDN = 27017
+MONGODB_DBNAME_CSDN = "csdn"
+MONGODB_COLLECTION_CSDN = "csdntest"
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html

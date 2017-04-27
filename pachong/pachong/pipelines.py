@@ -32,24 +32,43 @@ class StocksSpiderPipeline(object):
         self.f.close()
 
 
+# from pachong import settings
+# # from pachong.items import BiliIndexItem        # 为什么显示没用到这条语句
+# from pymongo import MongoClient
+#
+# host = settings.MONGODB_HOST
+# port = settings.MONGODB_PORT
+# dbname = settings.MONGODB_DBNAME
+# collection = settings.MONGODB_COLLECTION
+#
+# class BiliIndexPipeline(object):
+#     def __init__(self):
+#         client = MongoClient(host=host, port=port)
+#         db = client[dbname]
+#         self.collection = db[collection]
+#
+#     def process_item(self, item, spider):
+#         # for data in item:
+#         #     self.collenction.insert(dict(data))
+#         self.collection.insert(dict(item))
+#         return item
+
+
 from pachong import settings
-# from pachong.items import BiliIndexItem        # 为什么显示没用到这条语句
 from pymongo import MongoClient
 
-host = settings.MONGODB_HOST
-port = settings.MONGODB_PORT
-dbname = settings.MONGODB_DBNAME
-collection = settings.MONGODB_COLLECTION
+host = settings.MONGODB_HOST_CSDN
+port = settings.MONGODB_PORT_CSDN
+dbname = settings.MONGODB_DBNAME_CSDN
+collection = settings.MONGODB_COLLECTION_CSDN
 
-class BiliIndexPipeline(object):
+class CsdnTitlePipline(object):
     def __init__(self):
         client = MongoClient(host=host, port=port)
         db = client[dbname]
         self.collection = db[collection]
 
     def process_item(self, item, spider):
-        # for data in item:
-        #     self.collenction.insert(dict(data))
         self.collection.insert(dict(item))
         return item
 
